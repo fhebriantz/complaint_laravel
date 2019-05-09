@@ -5,15 +5,15 @@
     <div class="panel box-shadow-none content-header">
         <div class="panel-body">
             <div class="col-md-12">
-                <h3 class="animated fadeInLeft">Mgmtuserdept</h3>
-                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Mgmtuserdept <span class="fa-angle-right fa"></span> Create</p>
+                <h3 class="animated fadeInLeft">Management User Department</h3>
+                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Management User Department <span class="fa-angle-right fa"></span> Create</p>
             </div>
         </div>
     </div>
     <div class="col-md-12 top-20 padding-0">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading"><h3>Data Mgmtuserdept</h3></div>
+                <div class="panel-heading"><h3>Data Management User Department</h3></div>
                 <div class="panel-body">
                     <div class="responsive-table">
                         @if ($errors->any())
@@ -33,8 +33,8 @@
                                     <td>
                                         <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_mgmt_user" style="width: 100%">
                                             <option value="">-- Choose User --</option>
-                                            @foreach($mgmtuser as $mgmtuser)
-                                            <option value="{{$mgmtuser->id}}" {{ (old('id_mgmt_user') == $mgmtuser->id ? 'selected':'') }} >{{$mgmtuser->iduser}} - {{$mgmtuser->email}}</option>
+                                            @foreach($mgmtuser as $user)
+                                            <option value="{{$user->id}}" {{ (old('id_mgmt_user') == $user->id ? 'selected':'') }} >{{$user->id}} - {{$user->email}}</option>
                                             @endforeach
                                         </select>
                                     </td>

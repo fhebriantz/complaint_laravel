@@ -7,6 +7,11 @@
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
                     <li class="ripple">
+                      <a href="{{url('/cmsuser')}}"> Master CMS User
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                    </li>
+                    <li class="ripple">
                       <a href="{{url('/department')}}"> Master Department
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
@@ -19,6 +24,18 @@
                     </li>
                     @else
                     @endif
+
+                    <li class="ripple">
+                      <a href="{{url('/slider')}}"> Master Slider
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                    </li>
+
+                    <li class="ripple">
+                      <a href="{{url('/emailtemplate')}}"> Master Email Template
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                    </li>
                     <li class="ripple">
                       <a class="tree-toggle nav-header"></span> Master User
                         <span class="fa-angle-right fa right-arrow text-right"></span>
@@ -29,6 +46,7 @@
                         <li><a href="{{url('/mgmtuserdept')}}">Management User Dept</a></li>
                       </ul>
                     </li>
+
                   </ul>
                 </div>
             </div>

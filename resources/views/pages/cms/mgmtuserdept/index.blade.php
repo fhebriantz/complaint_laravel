@@ -5,15 +5,15 @@
     <div class="panel box-shadow-none content-header">
         <div class="panel-body">
             <div class="col-md-12">
-                <h3 class="animated fadeInLeft">Mgmtuserdept</h3>
-                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Mgmtuserdept</p>
+                <h3 class="animated fadeInLeft">Management User Department</h3>
+                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Management User Department</p>
             </div>
         </div>
     </div>
     <div class="col-md-12 top-20 padding-0">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading"><h3>Data Mgmtuserdept</h3>  <a href="{{url('/mgmtuserdept/create')}}"><button type="button" style="margin-bottom: 10px;" class="btn btn-success">Add New Mgmtuserdept</button></a></div>
+                <div class="panel-heading"><h3>Data Management User Department</h3>  <a href="{{url('/mgmtuserdept/create')}}"><button type="button" style="margin-bottom: 10px;" class="btn btn-success">Add New Management User Department</button></a></div>
                 <div class="panel-body">
                     <div class="responsive-table">
 
@@ -30,10 +30,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Country</th>
                                     <th>ID User</th>
                                     <th>Email User</th>
                                     <th>ID Dept</th>
-                                    <th>Department</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th width="100">Action</th>
@@ -44,9 +44,9 @@
                                 @foreach($data_mgmtuserdept as $data)
                                 <tr>    
                                     <td>{{ $no++ }}</td>
+                                    <td>{{$data->country_name}}</td>
                                     <td>{{$data->id_mgmt_user}}</td>
                                     <td>{{$data->email}}</td>
-                                    <td>{{$data->id_designated_department}}</td>
                                     <td>{{$data->department_name}}</td>
                                     <td>{{$data->created_at}}</td>
                                     <td>{{$data->updated_at}}</td>

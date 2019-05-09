@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Routing\Middleware\LoginCheck;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Cms_user;
+use App\Http\Model\Cmsuser;
 use DateTime;
 use Auth;
 use DB;
@@ -30,7 +30,7 @@ class LoginController extends Controller
         $username = $request->username;
         $password = md5($request->password);
        
-            $checkLogin = Cms_user::where(['username'=>$username,'password'=>$password,'is_active'=>'1'])
+            $checkLogin = Cmsuser::where(['username'=>$username,'password'=>$password,'is_active'=>'1'])
             ->select('dbs_cms_user.*')
             ->get();
 
@@ -82,7 +82,7 @@ class LoginController extends Controller
     //             'is_active' => 'required',
     //         ]);
 
-    //     $user_management = new Cms_user;
+    //     $user_management = new Cmsuser;
 
     //         $user_management->fullname = $request->fullname; 
     //         $user_management->username = $request->username; 
@@ -108,7 +108,7 @@ class LoginController extends Controller
     //             'is_active' => 'required',
     //         ]);
         
-    //     $user_management = Cms_user::find($id);
+    //     $user_management = Cmsuser::find($id);
 
     //         $user_management->fullname = $request->fullname; 
     //         $user_management->username = $request->username; 
@@ -126,7 +126,7 @@ class LoginController extends Controller
 
     public function delete($id){
 
-        $user_management = Cms_user::find($id);
+        $user_management = Cmsuser::find($id);
         $user_management->delete();
         
         return  redirect('forgotpass');

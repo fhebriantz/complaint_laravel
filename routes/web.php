@@ -122,3 +122,66 @@ Route::put('mgmtuserdept/{id}/edit','MgmtuserdeptController@update');
 Route::delete('mgmtuserdept/{id}/delete','MgmtuserdeptController@delete');
 // Call function to view
 Route::get('mgmtuserdept/{id}/view','MgmtuserdeptController@view'); 
+
+
+// =====ROUTE:SHOW=====
+// Show list of Cmsuser
+Route::get('cmsuser', 'CmsuserController@list'); 
+// Show form create of Cmsuser
+Route::get('cmsuser/create', 'CmsuserController@create');
+// Show form edit of Cmsuser
+Route::get('cmsuser/{id}/edit','CmsuserController@edit');  
+// Show form view of Cmsuser
+Route::get('cmsuser/{id}/view','CmsuserController@view');  
+
+// =====ROUTE:FUNCTION=====
+// Call function to insert
+Route::post('cmsuser/create','CmsuserController@insert'); 
+// Call function to update
+Route::put('cmsuser/{id}/edit','CmsuserController@update');  
+// Call function to delete
+Route::delete('cmsuser/{id}/delete','CmsuserController@delete');
+// Call function to view
+Route::get('cmsuser/{id}/view','CmsuserController@view'); 
+
+
+// =====ROUTE:SHOW=====
+// Show list of Slider
+Route::get('slider', 'SliderController@list'); 
+// Show form create of Slider
+Route::get('slider/create', 'SliderController@create');
+// Show form edit of Slider
+Route::get('slider/{id}/edit','SliderController@edit');  
+// Show form view of Slider
+Route::get('slider/{id}/view','SliderController@view');  
+
+// =====ROUTE:FUNCTION=====
+// Call function to insert
+Route::post('slider/create','SliderController@insert'); 
+// Call function to update
+Route::put('slider/{id}/edit','SliderController@update');  
+// Call function to delete
+Route::delete('slider/{id}/delete','SliderController@delete');
+// Call function to view
+Route::get('slider/{id}/view','SliderController@view'); 
+
+
+// =====ROUTE:SHOW=====
+// Show list of Emailtemplate
+Route::get('emailtemplate', 'EmailtemplateController@list'); 
+// Show form create of Emailtemplate
+Route::get('emailtemplate/create', 'EmailtemplateController@create');
+// Show form edit of Emailtemplate
+Route::get('emailtemplate/{id}/edit','EmailtemplateController@edit');  
+// Show form view of Emailtemplate
+Route::get('emailtemplate/{id}/view','EmailtemplateController@view');  
+
+// =====ROUTE:FUNCTION=====
+// Call function to insert
+Route::post('emailtemplate/create','EmailtemplateController@insert'); 
+// Call function to update
+Route::put('emailtemplate/{id}/edit','EmailtemplateController@update');  
+// Call function to delete
+Route::delete('emailtemplate/{id}/delete','EmailtemplateController@delete');
+// Call function to view
+Route::get('emailtemplate/{id}/view','EmailtemplateController@view'); 

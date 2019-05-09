@@ -5,15 +5,15 @@
     <div class="panel box-shadow-none content-header">
         <div class="panel-body">
             <div class="col-md-12">
-                <h3 class="animated fadeInLeft">Management User</h3>
-                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Management User <span class="fa-angle-right fa"></span> View</p>
+                <h3 class="animated fadeInLeft">CMS User</h3>
+                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> CMS User <span class="fa-angle-right fa"></span> View</p>
             </div>
         </div>
     </div>
     <div class="col-md-12 top-20 padding-0">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading"><h3>Data Management User</h3></div>
+                <div class="panel-heading"><h3>Data CMS User</h3></div>
                 <div class="panel-body">
                     <div class="responsive-table">
                         @if ($errors->any())
@@ -30,59 +30,51 @@
                                 @if(session()->get('session_superadmin') == 1)
                                 <tr>
                                     <td>Country</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->country_name }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->country_name }}" readonly></td>
                                 </tr> 
                                 @else
                                 @endif    
                                 <tr>
-                                    <td>Designated Department<em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->department_name }}" readonly></td>
+                                    <td>fullname <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->fullname }}" readonly></td>
                                 </tr>   
                                 <tr>
-                                    <td>ID User Internal <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->id_user_internal }}" readonly></td>
+                                    <td>username <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->username }}" readonly></td>
                                 </tr> 
                                 <tr>
-                                    <td>Position <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->position }}" readonly></td>
+                                    <td>password</td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->password }}" readonly></td>
+                                </tr>   
+                                <tr>
+                                    <td>Is Superadmin <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->is_superadmin=='1' ? 'Yes':'No' }}" readonly></td>
                                 </tr> 
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->email }}" readonly></td>
-                                </tr>   
-                                <tr>
-                                    <td>Password</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->password }}" readonly></td>
-                                </tr>   
-                                <tr>
-                                    <td>Telepone</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->telephone }}" readonly></td>
-                                </tr>    
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->is_active=='1' ? 'Active':'Inactive' }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->is_active=='1' ? 'Active':'Inactive' }}" readonly></td>
                                 </tr> 
                                 <tr>
                                     <td>Created By </td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->created_by }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->created_by }}" readonly></td>
                                 </tr>  
                                 <tr>
                                     <td>Created Date</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->created_at }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->created_at }}" readonly></td>
                                 </tr>  
                                 <tr>
                                     <td>Modified By</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->updated_by }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->updated_by }}" readonly></td>
                                 </tr>  
                                 <tr>
                                     <td>Modified Date</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->updated_at }}" readonly></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_cmsuser->updated_at }}" readonly></td>
                                 </tr>  
                                 <tr>
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <a class="btn btn-danger" href="{{url('/mgmtuser')}}"  style="text-decoration: none;">Back</a>
+                                        <a class="btn btn-danger" href="{{url('/cmsuser')}}"  style="text-decoration: none;">Back</a>
                                     </td>
                                 </tr>
                             </table>

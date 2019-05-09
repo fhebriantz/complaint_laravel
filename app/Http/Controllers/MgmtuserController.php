@@ -23,7 +23,11 @@ class MgmtuserController extends Controller
 
     public function list()
     { 
-        $data_mgmtuser = Mgmtuser::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $data_mgmtuser = Mgmtuser::GetAllData();
+        }else{
+            $data_mgmtuser = Mgmtuser::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         $no = 1;
     	return view('pages/cms/mgmtuser/index', compact('data_mgmtuser','no'));
     }

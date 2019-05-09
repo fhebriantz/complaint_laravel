@@ -21,22 +21,36 @@ class MgmtuserdeptController extends Controller
 
     public function list()
     { 
-        $data_mgmtuserdept = Mgmtuserdept::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $data_mgmtuserdept = Mgmtuserdept::GetAllData();
+        }else{
+            $data_mgmtuserdept = Mgmtuserdept::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         $no = 1;
     	return view('pages/cms/mgmtuserdept/index', compact('data_mgmtuserdept','no'));
     }
 
     function create()
     {
-        $mgmtuser = Mgmtuser::GetAllData();
-        $department = Department::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $mgmtuser = Mgmtuser::GetAllData();
+            $department = Department::GetAllData();
+        }else{
+            $mgmtuser = Mgmtuser::GetAllData()->where('id_country','=',session()->get('session_country'));
+            $department = Department::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         return view('pages/cms/mgmtuserdept/create', compact('mgmtuser','department'));
     }
 
     function edit($id)
     {
-        $mgmtuser = Mgmtuser::GetAllData();
-        $department = Department::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $mgmtuser = Mgmtuser::GetAllData();
+            $department = Department::GetAllData();
+        }else{
+            $mgmtuser = Mgmtuser::GetAllData()->where('id_country','=',session()->get('session_country'));
+            $department = Department::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         $mgmtuserdept=Mgmtuserdept::GetAllData()->where('id','=',$id)->first();
         return view('pages/cms/mgmtuserdept/edit')
         ->with('mgmtuser',$mgmtuser)

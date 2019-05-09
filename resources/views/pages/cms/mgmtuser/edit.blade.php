@@ -5,15 +5,15 @@
     <div class="panel box-shadow-none content-header">
         <div class="panel-body">
             <div class="col-md-12">
-                <h3 class="animated fadeInLeft">Mgmtuser</h3>
-                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Mgmtuser <span class="fa-angle-right fa"></span> Edit</p>
+                <h3 class="animated fadeInLeft">Management User</h3>
+                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Management User <span class="fa-angle-right fa"></span> Edit</p>
             </div>
         </div>
     </div>
     <div class="col-md-12 top-20 padding-0">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading"><h3>Data Mgmtuser</h3></div>
+                <div class="panel-heading"><h3>Data Management User</h3></div>
                 <div class="panel-body">
                     <div class="responsive-table">
                         @if ($errors->any())

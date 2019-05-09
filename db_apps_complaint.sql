@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2019 at 03:12 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: May 09, 2019 at 10:20 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -8428,7 +8428,8 @@ CREATE TABLE `dbs_cms_user` (
 
 INSERT INTO `dbs_cms_user` (`id`, `id_country`, `fullname`, `username`, `password`, `is_superadmin`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
 (1, NULL, 'Administrator', 'administrator', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, 'administrator', '2019-04-21 17:00:00', NULL, '2019-04-22 15:45:34'),
-(2, 2, 'Administrator Indonesia', 'id_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'administrator', '2019-05-09 11:51:41', NULL, '2019-04-22 15:45:36');
+(2, 1, 'Administrator Indonesia', 'id_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'administrator', '2019-05-09 20:09:52', NULL, '2019-04-22 15:45:36'),
+(3, 2, 'Lutfi', 'th_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'Administrator Indonesia', '2019-05-09 20:14:39', 'Administrator Indonesia', '2019-05-10 03:14:39');
 
 -- --------------------------------------------------------
 
@@ -9141,8 +9142,8 @@ INSERT INTO `dbs_department` (`id`, `id_country`, `department_name`, `department
 (47, 1, 'CS Ocean', 'CS Ocean', NULL, NULL, 'eko.andaryanto@dbschenker.com', '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
 (48, 1, 'Ocean Export', 'Ocean Export', NULL, NULL, 'yasminingsih@dbschenker.com', '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
 (49, 1, 'Ocean Import', 'Ocean Import', NULL, NULL, 'rio.wicaksono@dbschenker.com', '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
-(50, 2, 'Test Department', 'Test Department', NULL, NULL, NULL, '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
-(51, 2, 'Test QHSSE ', 'Test QHSSE ', NULL, NULL, NULL, '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
+(50, 2, 'Test Department', 'Test Department', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
+(51, 2, 'Test QHSSE ', 'Test QHSSE ', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', '1', '1', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:06'),
 (52, NULL, 'aaaaaa', 'aaaaaa', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', '1', '1', 1, 'Administrator', '2019-05-08 21:42:20', NULL, '2019-05-08 21:42:20'),
 (53, 1, 'aaa', 'aaa', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', '1', '1', 2, 'Administrator', '2019-05-08 21:44:33', 'Administrator', '2019-05-08 23:47:42'),
 (54, NULL, 'xxx', 'xxx', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', 'lutfi.febrianto@gmail.com', '1', '1', 1, 'Administrator Indonesia', '2019-05-08 23:03:58', NULL, '2019-05-08 23:03:58'),
@@ -9198,10 +9199,12 @@ INSERT INTO `dbs_email_template` (`id`, `id_country`, `subject`, `message`, `typ
 (2, 1, '[DB Schenker] Satisfaction of Comment', '<p>Dear sender,&nbsp;<br />\n<br />\nYour comment has been successfully settled.  On the attachment you will find additional information for your reference.</p>\n<p>Thank you for contacting us and have a great day!</p>\n<p>-Customer Service-</p>', 'Feedback', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
 (4, 1, '[DB Schenker] Aknowledged Comment Detail', '<p>Dear sender,<br />\n<br />\nYour comment has been acknowledged. Please refer to the details below.</p>\n<p>Thank you.</p>\n<p>-Customer Service-</p>', 'Acknowledge', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
 (5, 1, '[DB Schenker] Review Detail', '<p>Dear sender, <br />\r\n<br />\r\nYour comment has been successfully closed. Please refer to the details below.</p>\r\n<p>Thank you!</p>\r\n<p>-Customer Service-</p>', 'Review', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
-(6, 1, '[DB Schenker] Comment delivered successfully', '<p style=\"text-align: left;\">Dear Customer,</p>\r\n<p style=\"text-align: left;\">\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">We successfully received your feedback and we have forwarded it to the responsible department. We will get back to you as soon as possible, usually within 2 business days. <o:p></o:p></span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">Yours sincerely, <o:p></o:p></span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">Your DB Schenker Team</span></p>\r\n</p>', 'Success_Complaint (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
-(7, 1, '[DB Schenker] Satisfaction of Comment', '<p>Dear all, <br />\n<br />\nYour comment has been successfully settled.  On the attachment you will find addtitional information for your reference.</p>\n<p>Thank you!</p>\n<p>-Customer Service-</p>', 'Feedback (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
+(6, 2, '[DB Schenker] Comment delivered successfully', '<p style=\"text-align: left;\">Dear Customer,</p>\r\n<p style=\"text-align: left;\">\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">We successfully received your feedback and we have forwarded it to the responsible department. We will get back to you as soon as possible, usually within 2 business days. <o:p></o:p></span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">Yours sincerely, <o:p></o:p></span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-family:\"DB Office\",sans-serif\">Your DB Schenker Team</span></p>\r\n</p>', 'Success_Complaint (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
+(7, 2, '[DB Schenker] Satisfaction of Comment', '[DB Schenker] Satisfaction of Comment', 'Feedback', 1, 'administrator', '0000-00-00 00:00:00', 'Administrator Indonesia', '2019-05-09 19:50:55'),
+(11, 2, '1111s', '<p>ssdo</p>', 'Success_Complaint', 1, 'Administrator Indonesia', '2019-05-10 02:51:19', 'Administrator Indonesia', '2019-05-09 19:54:45'),
 (8, 1, '[DB Schenker] Aknowledged Comment Detail', '<p>Dear all,<br />\n<br />\nYour comment has been acknowledged. Please refer to the details below.</p>\n<p>Thank you.</p>\n<p>-Customer Service-</p>', 'Acknowledge (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
-(9, 1, '[DB Schenker] Review Detail', '<p>Dear all,<br />\r\n<br />\r\nYour comment has been successfully closed. Please refer to the details below.</p>\r\n<p>Thank you!</p>\r\n<p>-Customer Service-</p>', 'Review (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18');
+(9, 1, '[DB Schenker] Review Detail', '<p>Dear all,<br />\r\n<br />\r\nYour comment has been successfully closed. Please refer to the details below.</p>\r\n<p>Thank you!</p>\r\n<p>-Customer Service-</p>', 'Review (Internal)', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:47:18'),
+(10, 2, '1111', '1111', 'Feedback', 1, 'Administrator Indonesia', '2019-05-10 02:44:35', 'Administrator Indonesia', '2019-05-09 19:51:04');
 
 -- --------------------------------------------------------
 
@@ -9941,7 +9944,8 @@ INSERT INTO `dbs_mgmt_user` (`id`, `id_country`, `id_designated_department`, `id
 (888, 2, 50, 934, 9, '827ccb0eea8a706c4c34a16891f84e7b', 'salesperson1@dbschenker.com', '', NULL, 0, 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:52:51'),
 (889, 2, 50, 935, 9, '827ccb0eea8a706c4c34a16891f84e7b', 'salesperson2@dbschenker.com', '', NULL, 0, 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:52:51'),
 (890, 1, 1, 759, 1, '80c9ef0fb86369cd25f90af27ef53a9e', 'debora.a-marpaung@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 12:25:38', 'Administrator', '2019-05-09 05:25:38'),
-(891, 1, 14, 510, 1, '80c9ef0fb86369cd25f90af27ef53a9e', 'ignatia.irnawati@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 12:25:21', 'Administrator', '2019-05-09 05:25:21');
+(891, 1, 14, 510, 1, '80c9ef0fb86369cd25f90af27ef53a9e', 'ignatia.irnawati@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 12:25:21', 'Administrator', '2019-05-09 05:25:21'),
+(892, 1, 14, 503, 2, '202cb962ac59075b964b07152d234b70', 'elmi.pujiastuti@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 10:54:18', NULL, '2019-05-09 10:54:18');
 
 -- --------------------------------------------------------
 
@@ -10175,7 +10179,7 @@ INSERT INTO `dbs_mgmt_user_dept` (`id`, `id_mgmt_user`, `id_designated_departmen
 (214, 749, 10, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (215, 751, 15, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (216, 754, 10, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
-(217, 756, 10, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
+(217, 756, 45, '2019-05-09 19:56:12', '2019-05-09 18:04:55'),
 (218, 758, 10, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (219, 759, 27, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (220, 766, 27, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
@@ -10279,9 +10283,13 @@ INSERT INTO `dbs_mgmt_user_dept` (`id`, `id_mgmt_user`, `id_designated_departmen
 (318, 622, 31, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (319, 888, 50, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
 (320, 889, 50, '2019-05-09 19:56:12', '2019-05-09 19:56:12'),
-(321, 598, 7, '2019-05-09 12:56:19', '2019-05-09 12:56:19'),
+(321, 598, 38, '2019-05-09 12:56:19', '2019-05-09 18:05:13'),
 (322, 890, 48, '2019-05-09 12:56:28', '2019-05-09 12:56:28'),
-(323, 890, 33, '2019-05-09 12:57:02', '2019-05-09 12:57:02');
+(323, 890, 33, '2019-05-09 12:57:02', '2019-05-09 12:57:02'),
+(324, 892, 14, '2019-05-09 18:04:20', '2019-05-09 18:04:20'),
+(325, 606, 50, '2019-05-09 18:09:54', '2019-05-09 18:09:54'),
+(326, 606, 50, '2019-05-09 18:16:29', '2019-05-09 18:16:29'),
+(327, 889, 50, '2019-05-10 01:17:28', '2019-05-10 01:17:28');
 
 -- --------------------------------------------------------
 
@@ -10467,7 +10475,9 @@ INSERT INTO `dbs_slider` (`id`, `id_country`, `nama_slider`, `caption`, `tanggal
 (5, 1, 'DCF410_185_Print_43324.jpg', 'Truk 1', '22/10/2014', 1, 'administrator', '2019-05-07 02:15:15', NULL, '2019-04-22 08:48:20'),
 (6, 1, 'SFX_truck_picture.jpg', 'Truk 2', '22/10/2014', 1, 'administrator', '2019-05-07 02:15:17', NULL, '2019-04-22 08:48:20'),
 (7, 3, 'DCF410_185_Print_43324.jpg', 'Truk 1', '22/10/2014', 1, 'administrator', '2019-05-07 02:15:15', NULL, '2019-04-22 08:48:20'),
-(8, 3, 'SFX_truck_picture.jpg', 'Truk 2', '22/10/2014', 1, 'administrator', '2019-05-07 02:15:17', NULL, '2019-04-22 08:48:20');
+(8, 3, 'SFX_truck_picture.jpg', 'Truk 2', '22/10/2014', 1, 'administrator', '2019-05-07 02:15:17', NULL, '2019-04-22 08:48:20'),
+(9, 2, 'slider1557428954.png', '123aaa', '2019-05-10 2:0:48', 0, 'Administrator Indonesia', '2019-05-09 19:19:20', 'Administrator Indonesia', '2019-05-09 19:19:20'),
+(10, 2, 'slider1557429985.png', 'ada', '2019-05-10 14:25:55', 1, 'Administrator Indonesia', '2019-05-09 19:26:25', NULL, '2019-05-09 19:26:25');
 
 -- --------------------------------------------------------
 
@@ -10761,9 +10771,9 @@ INSERT INTO `dbs_user_internal` (`id`, `id_country`, `username`, `id_department`
 (857, 1, 'INDRA ATMADIBRATA', 2, 'JAKARTA', 'CGK', 'indra.atmadibrata@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (859, 1, 'AYU JUMARIA', 27, 'JAKARTA', 'wisma raharja', 'ayu.jumaria@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (860, 1, 'YUS MESTI', 27, 'Jakarta', 'Wisma Raharja', 'yus.mesti@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
-(862, 2, 'Test PIC', 50, '', '', '', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
-(863, 2, 'Test HOD', 50, '', '', '', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
-(864, 2, 'Test HSE', 51, '', '', '', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
+(862, 2, 'Test PIC', 50, '', '', 'meylany.limanauw@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-05-10 01:16:00'),
+(863, 2, 'Test HOD', 50, '', '', 'meylany.limanauw@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-05-10 01:15:56'),
+(864, 2, 'Test HSE', 51, '', '', 'meylany.limanauw@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-05-10 01:15:58'),
 (866, 1, 'IVON DETHAN', 23, 'head office', 'head office', 'ivon.dethan@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (868, 1, 'id.hse', 8, '', '', 'id.hse@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (869, 1, 'id.hse', 18, '', '', 'id.hse@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
@@ -10822,8 +10832,8 @@ INSERT INTO `dbs_user_internal` (`id`, `id_country`, `username`, `id_department`
 (931, 1, 'syalindri hadisaputri', 27, 'Head Office', 'Head Office', 'syalindri.hadisaputri@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (932, 1, 'rio wicaksono', 49, 'Head Office', 'Head Office', 'rio.wicaksono@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
 (933, 1, 'rio wicaksono', 49, 'Head Office', 'Head Office', 'rio.wicaksono@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
-(934, 2, 'Salesperson 1', NULL, '', '', '', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
-(935, 2, 'Salesperson 2', NULL, '', '', '', 1, 'administrator', '0000-00-00 00:00:00', NULL, NULL),
+(934, 2, 'Salesperson 1', NULL, '', '', 'meylany.limanauw@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-05-10 01:15:59'),
+(935, 2, 'Salesperson 2', NULL, '', '', 'meylany.limanauw@dbschenker.com', 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-05-10 01:15:55'),
 (936, 1, 'security-1a', 7, 'asd', 'asd', 'lutfi.febrianto@gmail.com', 1, 'Administrator', '2019-05-09 10:35:53', 'Administrator', '2019-05-09 10:38:34');
 
 -- --------------------------------------------------------
@@ -11312,7 +11322,7 @@ ALTER TABLE `dbs_audit_trail`
 -- AUTO_INCREMENT for table `dbs_cms_user`
 --
 ALTER TABLE `dbs_cms_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dbs_complaint_form`
@@ -11360,7 +11370,7 @@ ALTER TABLE `dbs_email`
 -- AUTO_INCREMENT for table `dbs_email_template`
 --
 ALTER TABLE `dbs_email_template`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `dbs_flag_detail`
@@ -11378,13 +11388,13 @@ ALTER TABLE `dbs_holiday`
 -- AUTO_INCREMENT for table `dbs_mgmt_user`
 --
 ALTER TABLE `dbs_mgmt_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=892;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=893;
 
 --
 -- AUTO_INCREMENT for table `dbs_mgmt_user_dept`
 --
 ALTER TABLE `dbs_mgmt_user_dept`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
 
 --
 -- AUTO_INCREMENT for table `dbs_position`
@@ -11408,7 +11418,7 @@ ALTER TABLE `dbs_settings`
 -- AUTO_INCREMENT for table `dbs_slider`
 --
 ALTER TABLE `dbs_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `dbs_status_complaint_form`

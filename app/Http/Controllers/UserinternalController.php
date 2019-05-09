@@ -21,7 +21,11 @@ class UserinternalController extends Controller
 
     public function list()
     { 
-        $data_userinternal = Userinternal::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $data_userinternal = Userinternal::GetAllData();
+        }else{
+            $data_userinternal = Userinternal::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         $no = 1;
     	return view('pages/cms/userinternal/index', compact('data_userinternal','no'));
     }

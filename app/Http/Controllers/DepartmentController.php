@@ -20,7 +20,11 @@ class DepartmentController extends Controller
 
     public function list()
     { 
-        $data_department = Department::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $data_department = Department::GetAllData();
+        }else{
+            $data_department = Department::GetAllData()->where('id_country','=',session()->get('session_country'));
+        }
         $no = 1;
     	return view('pages/cms/department/index', compact('data_department','no'));
     }

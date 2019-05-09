@@ -5,15 +5,15 @@
     <div class="panel box-shadow-none content-header">
         <div class="panel-body">
             <div class="col-md-12">
-                <h3 class="animated fadeInLeft">User Internal</h3>
-                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> User Internal <span class="fa-angle-right fa"></span> Edit</p>
+                <h3 class="animated fadeInLeft">Email Template</h3>
+                <p class="animated fadeInDown">CMS <span class="fa-angle-right fa"></span> Email Template <span class="fa-angle-right fa"></span> Edit</p>
             </div>
         </div>
     </div>
     <div class="col-md-12 top-20 padding-0">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading"><h3>Data User Internal</h3></div>
+                <div class="panel-heading"><h3>Data Email Template</h3></div>
                 <div class="panel-body">
                     <div class="responsive-table">
                         @if ($errors->any())
@@ -25,7 +25,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form method="POST" action="{{url('/userinternal/'.$data_userinternal->id.'/edit')}}">
+                        <form method="POST" action="{{url('/emailtemplate/'.$data_emailtemplate->id.'/edit')}}">
                         {{ csrf_field() }}
                             <table class="table">  
 
@@ -36,7 +36,7 @@
                                         <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_country" style="width: 100%">
                                             <option value="">-- Choose Country --</option>
                                             @foreach($country as $kontri)
-                                            <option value="{{$kontri->id}}" {{ ($data_userinternal->id_country == $kontri->id ? 'selected':'') }} > {{$kontri->country_name}}</option>
+                                            <option value="{{$kontri->id}}" {{ ($data_emailtemplate->id_country == $kontri->id ? 'selected':'') }} >{{$kontri->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -44,39 +44,48 @@
                                 @else
                                 @endif    
                                 <tr>
-                                    <td>Username <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="username" required="" placeholder="Username" value="{{ $data_userinternal->username }}" style="width: 100%"></td>
+                                    <td>Subject <em style="color:red">*</em></td>
+                                    <td><input type="text"  class="form-control" name="subject" required="" placeholder="Subject Name" value="{{ $data_emailtemplate->subject }}" style="width: 100%"></td>
                                 </tr>   
                                 <tr>
-                                    <td>Department</td>
+                                    <td>Message <em style="color:red">*</em></td>
+                                    <td><textarea id="summernote" class="form-control" name="message" required="" placeholder="Description" style="width: 100%">{!! $data_emailtemplate->message !!}</textarea></td>
+                                </tr> 
+                                <tr>
+                                    <td>Type of Email</td>
                                     <td>
-                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_department" style="width: 100%">
-                                            <option value="">-- Choose Department --</option>
-                                            @foreach($department as $dept)
-                                            <option value="{{$dept->id}}" {{ ($data_userinternal->id_department == $dept->id ? 'selected':'') }} >{{$dept->country_code}} - {{$dept->department_name}}</option>
-                                            @endforeach
+                                        <select name="type_of_email"  class="form-control" style="width: 100%">
+                                            <option value="">-- Choose Type --</option>
+                                            <option value="Success_Complaint" {{ ($data_emailtemplate->type_of_email == 'Success_Complaint' ? 'selected':'') }}>Success_Complaint</option>
+
+                                            <option value="Feedback" {{ ($data_emailtemplate->type_of_email == 'Feedback' ? 'selected':'') }}>Feedback</option>
+
+                                            <option value="Complaint_Fixed" {{ ($data_emailtemplate->type_of_email == 'Complaint_Fixed' ? 'selected':'') }}>Complaint_Fixed</option>
+
+                                            <option value="Acknowledge" {{ ($data_emailtemplate->type_of_email == 'Acknowledge' ? 'selected':'') }}>Acknowledge</option>
+
+                                            <option value="Review" {{ ($data_emailtemplate->type_of_email == 'Review' ? 'selected':'') }}>Review</option>
+
+                                            <option value="Success_Complaint (Internal)" {{ ($data_emailtemplate->type_of_email == 'Success_Complaint (Internal)' ? 'selected':'') }}>Success_Complaint (Internal)</option>
+
+                                            <option value="Feedback (Internal)" {{ ($data_emailtemplate->type_of_email == 'Feedback (Internal)' ? 'selected':'') }}>Feedback (Internal)</option>
+
+                                            <option value="Complaint_Fixed (Internal)" {{ ($data_emailtemplate->type_of_email == 'Complaint_Fixed (Internal)' ? 'selected':'') }}>Complaint_Fixed (Internal)</option>
+
+                                            <option value="Acknowledge (Internal)" {{ ($data_emailtemplate->type_of_email == 'Acknowledge (Internal)' ? 'selected':'') }}>Acknowledge (Internal)</option>
+                                            
+                                            <option value="Review (Internal)" {{ ($data_emailtemplate->type_of_email == 'Review (Internal)' ? 'selected':'') }}>Review (Internal)</option>
                                         </select>
                                     </td>
-                                </tr>  
-                                <tr>
-                                    <td>Branch Work Desc <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="branch_work_desc" required="" placeholder="Branch Work Desc" value="{{ $data_userinternal->branch_work_desc }}" style="width: 100%"></td>
                                 </tr>   
-                                <tr>
-                                    <td>Branch Work Base on SPU <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="branch_work_base_on_spu" required="" placeholder="Branch Work Base on SPU" value="{{ $data_userinternal->branch_work_base_on_spu }}" style="width: 100%"></td>
-                                </tr>     
-                                <tr>
-                                    <td>Email <em style="color:red">*</em></td>
-                                    <td><input type="email"  class="form-control" name="email" required="" placeholder="Email" value="{{ $data_userinternal->email }}" style="width: 100%"></td>
-                                </tr>       
+                                    
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>
                                     <td>
                                         <select name="is_active"  class="form-control" style="width: 100%">
                                             <option value="">-- Choose Status --</option>
-                                            <option value="1" {{ ($data_userinternal->is_active == '1' ? 'selected':'') }}>Active</option>
-                                            <option value="0" {{ ($data_userinternal->is_active == '0' ? 'selected':'') }}>Inactive</option>
+                                            <option value="1" {{ ($data_emailtemplate->is_active == '1' ? 'selected':'') }}>Active</option>
+                                            <option value="0" {{ ($data_emailtemplate->is_active == '0' ? 'selected':'') }}>Inactive</option>
                                         </select>
                                     </td>
                                 </tr> 
@@ -85,7 +94,7 @@
                                     <td></td>
                                     <td>
                                         <input class="btn btn-info" name="submit" value="Submit" type="submit">
-                                        <a class="btn btn-danger" href="{{url('/userinternal')}}"  style="text-decoration: none;">Back</a>
+                                        <a class="btn btn-danger" href="{{url('/emailtemplate')}}"  style="text-decoration: none;">Back</a>
                                     </td>
                                 </tr>
                             </table>
