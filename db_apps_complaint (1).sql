@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2019 at 10:20 PM
+-- Generation Time: May 09, 2019 at 10:34 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -8429,7 +8429,8 @@ CREATE TABLE `dbs_cms_user` (
 INSERT INTO `dbs_cms_user` (`id`, `id_country`, `fullname`, `username`, `password`, `is_superadmin`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
 (1, NULL, 'Administrator', 'administrator', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, 'administrator', '2019-04-21 17:00:00', NULL, '2019-04-22 15:45:34'),
 (2, 1, 'Administrator Indonesia', 'id_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'administrator', '2019-05-09 20:09:52', NULL, '2019-04-22 15:45:36'),
-(3, 2, 'Lutfi', 'th_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'Administrator Indonesia', '2019-05-09 20:14:39', 'Administrator Indonesia', '2019-05-10 03:14:39');
+(3, 2, 'Administrator Thailand', 'th_admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'Administrator Indonesia', '2019-05-09 20:31:15', 'Administrator Indonesia', '2019-05-10 03:14:39'),
+(4, 6, 'Administrator Japan', 'jp_admin', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, 'Administrator', '2019-05-09 20:34:03', NULL, '2019-05-10 03:34:03');
 
 -- --------------------------------------------------------
 
@@ -9059,10 +9060,10 @@ CREATE TABLE `dbs_country` (
 --
 
 INSERT INTO `dbs_country` (`id`, `country_code`, `country_name`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
-(1, 'id', 'INDONESIA', 1, 'administrator', '2019-04-14 17:00:00', NULL, NULL),
+(1, 'id', 'INDONESIA', 1, 'administrator', '2019-04-14 17:00:00', 'Administrator', '2019-05-09 20:33:05'),
 (2, 'th', 'THAILAND', 2, 'administrator', '2019-04-14 17:00:00', 'Administrator', '2019-05-09 00:15:21'),
 (3, 'vn', 'VIETNAM', 1, 'administrator', '2019-04-14 17:00:00', NULL, NULL),
-(4, 'th', 'THAILANDA', 1, 'Administrator', '2019-05-09 00:15:11', 'Administrator', '2019-05-09 00:30:53'),
+(4, 'th', 'THAILAND', 1, 'Administrator', '2019-05-09 00:15:11', 'Administrator', '2019-05-09 20:33:17'),
 (5, 'ind', 'INDIA', 0, 'Administrator', '2019-05-09 00:17:02', 'Administrator', '2019-05-09 00:22:41'),
 (6, 'jpn', 'JAPAN', 1, 'Administrator', '2019-05-09 00:18:20', NULL, '2019-05-09 00:18:20');
 
@@ -9945,7 +9946,8 @@ INSERT INTO `dbs_mgmt_user` (`id`, `id_country`, `id_designated_department`, `id
 (889, 2, 50, 935, 9, '827ccb0eea8a706c4c34a16891f84e7b', 'salesperson2@dbschenker.com', '', NULL, 0, 1, 'administrator', '0000-00-00 00:00:00', NULL, '2019-04-22 08:52:51'),
 (890, 1, 1, 759, 1, '80c9ef0fb86369cd25f90af27ef53a9e', 'debora.a-marpaung@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 12:25:38', 'Administrator', '2019-05-09 05:25:38'),
 (891, 1, 14, 510, 1, '80c9ef0fb86369cd25f90af27ef53a9e', 'ignatia.irnawati@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 12:25:21', 'Administrator', '2019-05-09 05:25:21'),
-(892, 1, 14, 503, 2, '202cb962ac59075b964b07152d234b70', 'elmi.pujiastuti@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 10:54:18', NULL, '2019-05-09 10:54:18');
+(892, 1, 14, 503, 2, '202cb962ac59075b964b07152d234b70', 'elmi.pujiastuti@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator', '2019-05-09 10:54:18', NULL, '2019-05-09 10:54:18'),
+(893, 2, 50, 862, 1, '202cb962ac59075b964b07152d234b70', 'meylany.limanauw@dbschenker.com', '085718841359', NULL, NULL, 1, 'Administrator Indonesia', '2019-05-09 20:25:16', NULL, '2019-05-09 20:25:16');
 
 -- --------------------------------------------------------
 
@@ -11322,7 +11324,7 @@ ALTER TABLE `dbs_audit_trail`
 -- AUTO_INCREMENT for table `dbs_cms_user`
 --
 ALTER TABLE `dbs_cms_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `dbs_complaint_form`
@@ -11388,7 +11390,7 @@ ALTER TABLE `dbs_holiday`
 -- AUTO_INCREMENT for table `dbs_mgmt_user`
 --
 ALTER TABLE `dbs_mgmt_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=893;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=894;
 
 --
 -- AUTO_INCREMENT for table `dbs_mgmt_user_dept`

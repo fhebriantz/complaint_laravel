@@ -32,7 +32,7 @@ class CountryController extends Controller
     function create()
     {
         if (session()->get('session_superadmin') == 1) {
-            return view('pages/cms/country/create', compact('country'));
+            return view('pages/cms/country/create');
         }else{
             $request->session()->flash('alert-danger', 'Access denied!');
             return redirect('department');
