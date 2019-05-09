@@ -35,33 +35,29 @@
                                 @else
                                 @endif    
                                 <tr>
-                                    <td>Mgmtuser Name <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->mgmtuser_name }}" readonly></td>
+                                    <td>Designated Department<em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->department_name }}" readonly></td>
                                 </tr>   
                                 <tr>
-                                    <td>Mgmtuser Description <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->mgmtuser_desc }}" readonly></td>
+                                    <td>ID User Internal <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->id_user_internal }}" readonly></td>
+                                </tr> 
+                                <tr>
+                                    <td>Position <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->position }}" readonly></td>
                                 </tr> 
                                 <tr>
                                     <td>Email</td>
                                     <td><input type="text" class="form-control" value="{{ $data_mgmtuser->email }}" readonly></td>
                                 </tr>   
                                 <tr>
-                                    <td>Head Of Mgmtuser</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->head_of_mgmtuser }}" readonly></td>
-                                </tr>  
-                                <tr>
-                                    <td>Manager</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->manager }}" readonly></td>
-                                </tr>  
-                                <tr>
-                                    <td>Flag Designated</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->flag_designated=='1' ? 'Yes':'No' }}" readonly></td>
+                                    <td>Password</td>
+                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->password }}" readonly></td>
                                 </tr>   
                                 <tr>
-                                    <td>Flag Ecternal</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->flag_external=='1' ? 'Yes':'No' }}" readonly></td>
-                                </tr>       
+                                    <td>Telepone</td>
+                                    <td><input type="text" class="form-control" value="{{ $data_mgmtuser->telephone }}" readonly></td>
+                                </tr>    
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>
                                     <td><input type="text" class="form-control" value="{{ $data_mgmtuser->is_active=='1' ? 'Active':'Inactive' }}" readonly></td>

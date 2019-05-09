@@ -36,7 +36,7 @@
                                         <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_country" style="width: 100%">
                                             <option value="">-- Choose Country --</option>
                                             @foreach($country as $kontri)
-                                            <option value="{{$kontri->id}}" {{ ($data_userinternal->id_country == $kontri->id ? 'selected':'') }} >{{$kontri->country_name}}</option>
+                                            <option value="{{$kontri->id}}" {{ ($data_userinternal->id_country == $kontri->id ? 'selected':'') }} > {{$kontri->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -44,44 +44,31 @@
                                 @else
                                 @endif    
                                 <tr>
-                                    <td>Userinternal Name <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="userinternal_name" required="" placeholder="Userinternal Name" value="{{ $data_userinternal->userinternal_name }}" style="width: 100%"></td>
+                                    <td>Username <em style="color:red">*</em></td>
+                                    <td><input type="text"  class="form-control" name="username" required="" placeholder="Username" value="{{ $data_userinternal->username }}" style="width: 100%"></td>
                                 </tr>   
                                 <tr>
-                                    <td>Userinternal Description <em style="color:red">*</em></td>
-                                    <td><textarea class="form-control" name="userinternal_desc" required="" placeholder="Description" style="width: 100%">{{ $data_userinternal->userinternal_desc }}</textarea></td>
-                                </tr> 
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="email"  class="form-control" name="email" placeholder="Email" value="{{ $data_userinternal->email }}" style="width: 100%"></td>
-                                </tr>   
-                                <tr>
-                                    <td>Head Of Userinternal</td>
-                                    <td><input type="email" class="form-control" name="head_of_userinternal" placeholder="Email Head Of Userinternal" value="{{ $data_userinternal->head_of_userinternal }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Manager</td>
-                                    <td><input type="email" class="form-control" name="manager" placeholder="Email Manager" value="{{ $data_userinternal->manager }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Flag Designated</td>
+                                    <td>Department</td>
                                     <td>
-                                        <select name="flag_designated"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_userinternal->flag_designated == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_userinternal->flag_designated == '0' ? 'selected':'') }}>No</option>
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_department" style="width: 100%">
+                                            <option value="">-- Choose Department --</option>
+                                            @foreach($department as $dept)
+                                            <option value="{{$dept->id}}" {{ ($data_userinternal->id_department == $dept->id ? 'selected':'') }} >{{$dept->country_code}} - {{$dept->department_name}}</option>
+                                            @endforeach
                                         </select>
                                     </td>
+                                </tr>  
+                                <tr>
+                                    <td>Branch Work Desc <em style="color:red">*</em></td>
+                                    <td><input type="text"  class="form-control" name="branch_work_desc" required="" placeholder="Branch Work Desc" value="{{ $data_userinternal->branch_work_desc }}" style="width: 100%"></td>
                                 </tr>   
                                 <tr>
-                                    <td>Flag Ecternal</td>
-                                    <td>
-                                        <select name="flag_external"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_userinternal->flag_external == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_userinternal->flag_external == '0' ? 'selected':'') }}>No</option>
-                                        </select>
-                                    </td>
+                                    <td>Branch Work Base on SPU <em style="color:red">*</em></td>
+                                    <td><input type="text"  class="form-control" name="branch_work_base_on_spu" required="" placeholder="Branch Work Base on SPU" value="{{ $data_userinternal->branch_work_base_on_spu }}" style="width: 100%"></td>
+                                </tr>     
+                                <tr>
+                                    <td>Email <em style="color:red">*</em></td>
+                                    <td><input type="email"  class="form-control" name="email" required="" placeholder="Email" value="{{ $data_userinternal->email }}" style="width: 100%"></td>
                                 </tr>       
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>

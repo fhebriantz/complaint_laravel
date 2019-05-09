@@ -29,67 +29,26 @@
                         {{ csrf_field() }}
                             <table class="table">  
 
-                                @if(session()->get('session_superadmin') == 1)
                                 <tr>
-                                    <td>Country</td>
+                                    <td>Management User</td>
                                     <td>
-                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_country" style="width: 100%">
-                                            <option value="">-- Choose Country --</option>
-                                            @foreach($country as $kontri)
-                                            <option value="{{$kontri->id}}" {{ ($data_mgmtuserdept->id_country == $kontri->id ? 'selected':'') }} >{{$kontri->country_name}}</option>
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_mgmt_user" style="width: 100%">
+                                            <option value="">-- Choose User --</option>
+                                            @foreach($mgmtuser as $mgmtuser)
+                                            <option value="{{$mgmtuser->id}}" {{ ($data_mgmtuserdept->id_mgmt_user == $mgmtuser->id ? 'selected':'') }} >{{$mgmtuser->id}} - {{$mgmtuser->email}}</option>
                                             @endforeach
                                         </select>
                                     </td>
                                 </tr> 
-                                @else
-                                @endif    
+
                                 <tr>
-                                    <td>Mgmtuserdept Name <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="mgmtuserdept_name" required="" placeholder="Mgmtuserdept Name" value="{{ $data_mgmtuserdept->mgmtuserdept_name }}" style="width: 100%"></td>
-                                </tr>   
-                                <tr>
-                                    <td>Mgmtuserdept Description <em style="color:red">*</em></td>
-                                    <td><textarea class="form-control" name="mgmtuserdept_desc" required="" placeholder="Description" style="width: 100%">{{ $data_mgmtuserdept->mgmtuserdept_desc }}</textarea></td>
-                                </tr> 
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="email"  class="form-control" name="email" placeholder="Email" value="{{ $data_mgmtuserdept->email }}" style="width: 100%"></td>
-                                </tr>   
-                                <tr>
-                                    <td>Head Of Mgmtuserdept</td>
-                                    <td><input type="email" class="form-control" name="head_of_mgmtuserdept" placeholder="Email Head Of Mgmtuserdept" value="{{ $data_mgmtuserdept->head_of_mgmtuserdept }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Manager</td>
-                                    <td><input type="email" class="form-control" name="manager" placeholder="Email Manager" value="{{ $data_mgmtuserdept->manager }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Flag Designated</td>
+                                    <td>Department</td>
                                     <td>
-                                        <select name="flag_designated"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_mgmtuserdept->flag_designated == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_mgmtuserdept->flag_designated == '0' ? 'selected':'') }}>No</option>
-                                        </select>
-                                    </td>
-                                </tr>   
-                                <tr>
-                                    <td>Flag Ecternal</td>
-                                    <td>
-                                        <select name="flag_external"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_mgmtuserdept->flag_external == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_mgmtuserdept->flag_external == '0' ? 'selected':'') }}>No</option>
-                                        </select>
-                                    </td>
-                                </tr>       
-                                <tr>
-                                    <td>Is Active <em style="color:red">*</em></td>
-                                    <td>
-                                        <select name="is_active"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Status --</option>
-                                            <option value="1" {{ ($data_mgmtuserdept->is_active == '1' ? 'selected':'') }}>Active</option>
-                                            <option value="0" {{ ($data_mgmtuserdept->is_active == '0' ? 'selected':'') }}>Inactive</option>
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_designated_department" style="width: 100%">
+                                            <option value="">-- Choose Department --</option>
+                                            @foreach($department as $dept)
+                                            <option value="{{$dept->id}}" {{ ($data_mgmtuserdept->id_designated_department == $dept->id ? 'selected':'') }} >{{$dept->country_code}} - {{$dept->department_name}}</option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr> 

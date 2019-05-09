@@ -35,32 +35,24 @@
                                 @else
                                 @endif    
                                 <tr>
-                                    <td>Userinternal Name <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->userinternal_name }}" readonly></td>
+                                    <td>Username <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->username }}" readonly></td>
                                 </tr>   
                                 <tr>
-                                    <td>Userinternal Description <em style="color:red">*</em></td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->userinternal_desc }}" readonly></td>
+                                    <td>Department <em style="color:red">*</em></td>
+                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->department_name }}" readonly></td>
                                 </tr> 
+                                <tr>
+                                    <td>Branch Work Desc</td>
+                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->branch_work_desc }}" readonly></td>
+                                </tr>   
+                                <tr>
+                                    <td>Branch Work Base on SPU</td>
+                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->branch_work_base_on_spu }}" readonly></td>
+                                </tr>  
                                 <tr>
                                     <td>Email</td>
                                     <td><input type="text" class="form-control" value="{{ $data_userinternal->email }}" readonly></td>
-                                </tr>   
-                                <tr>
-                                    <td>Head Of Userinternal</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->head_of_userinternal }}" readonly></td>
-                                </tr>  
-                                <tr>
-                                    <td>Manager</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->manager }}" readonly></td>
-                                </tr>  
-                                <tr>
-                                    <td>Flag Designated</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->flag_designated=='1' ? 'Yes':'No' }}" readonly></td>
-                                </tr>   
-                                <tr>
-                                    <td>Flag Ecternal</td>
-                                    <td><input type="text" class="form-control" value="{{ $data_userinternal->flag_external=='1' ? 'Yes':'No' }}" readonly></td>
                                 </tr>       
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>

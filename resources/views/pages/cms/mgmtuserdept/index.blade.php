@@ -30,12 +30,12 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Country</th>
-                                    <th>Mgmtuserdept Name</th>
-                                    <th>Mgmtuserdept Desc</th>
-                                    <th>Status</th>
-                                    <th>Created Date</th>
-                                    <th>Modified Date</th>
+                                    <th>ID User</th>
+                                    <th>Email User</th>
+                                    <th>ID Dept</th>
+                                    <th>Department</th>
+                                    <th>Created at</th>
+                                    <th>Updated at</th>
                                     <th width="100">Action</th>
                                 </tr>
                             </thead>
@@ -44,21 +44,20 @@
                                 @foreach($data_mgmtuserdept as $data)
                                 <tr>    
                                     <td>{{ $no++ }}</td>
-                                    <td>{{$data->country_name}}</td>
-                                    <td>{{$data->mgmtuserdept_name}}</td>
-                                    <td>{{$data->mgmtuserdept_desc}}</td>
-                                    <td>{{ $data->is_active=='1' ? 'Active':'Inactive' }}</td>
+                                    <td>{{$data->id_mgmt_user}}</td>
+                                    <td>{{$data->email}}</td>
+                                    <td>{{$data->id_designated_department}}</td>
+                                    <td>{{$data->department_name}}</td>
                                     <td>{{$data->created_at}}</td>
                                     <td>{{$data->updated_at}}</td>
                                     <td>
-                                        <a href="{{url('/mgmtuserdept/'.$data->id.'/view')}}" style="margin-bottom: 5px"><button type="button" class="btn btn-primary" style="margin-bottom: 5px">View</button></a>
                                         <a href="{{url('/mgmtuserdept/'.$data->id.'/edit')}}"><button type="button" class="btn btn-warning" style="margin-bottom: 5px">Edit</button></a>
-                                        <form method="POST" action="{{url('/mgmtuserdept/'.$data->id.'/delete')}}">
+                                        <!-- <form method="POST" action="{{url('/mgmtuserdept/'.$data->id.'/delete')}}"> -->
                                             <!-- csrf perlu ditambahakan di setiap post -->
-                                            {{ csrf_field() }}
-                                            <input class="btn btn-danger" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure want to delete caption {{$data->mgmtuserdept_name}}?');"> 
-                                            <input type="hidden" name="_method" value="DELETE">
-                                        </form>
+                                            <!-- {{ csrf_field() }} -->
+                                            <!-- <input class="btn btn-danger" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure want to delete caption {{$data->email}}?');">  -->
+                                            <!-- <input type="hidden" name="_method" value="DELETE"> -->
+                                        <!-- </form> -->
                                     </td>
                                 </tr>
                                 @endforeach

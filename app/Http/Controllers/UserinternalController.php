@@ -30,9 +30,9 @@ class UserinternalController extends Controller
     {
         $country = Country::GetAllData();
         if (session()->get('session_superadmin') == 1) {
-            $department = Department::GetAllData();
+            $department = Department::OrderbyCode();
         }else{
-            $department = Department::GetAllData()->where('id_country','=',session()->get('session_country'));
+            $department = Department::OrderbyCode()->where('id_country','=',session()->get('session_country'));
         }
         return view('pages/cms/userinternal/create', compact('country','department'));
     }
@@ -41,9 +41,9 @@ class UserinternalController extends Controller
     {
         $country = Country::GetAllData();
         if (session()->get('session_superadmin') == 1) {
-            $department = Department::GetAllData();
+            $department = Department::OrderbyCode();
         }else{
-            $department = Department::GetAllData()->where('id_country','=',session()->get('session_country'));
+            $department = Department::OrderbyCode()->where('id_country','=',session()->get('session_country'));
         }
         $userinternal=Userinternal::where('id','=',$id)->first();
         return view('pages/cms/userinternal/edit')
@@ -63,8 +63,10 @@ class UserinternalController extends Controller
     function insert(Request $request)  
     {
         $validatedData = $request->validate([
-            'userinternal_name' => 'required',
-            'userinternal_desc' => 'required',
+            'username' => 'required',
+            'branch_work_desc' => 'required',
+            'branch_work_base_on_spu' => 'required',
+            'email' => 'required',
             'is_active' => 'required',
         ]);
 
@@ -77,13 +79,11 @@ class UserinternalController extends Controller
         }else{
             $userinternal->id_country = session()->get('session_country');
         }
-        $userinternal->userinternal_name = $request->userinternal_name; 
-		$userinternal->userinternal_desc = $request->userinternal_desc; 
-		$userinternal->email = $request->email;
-        $userinternal->head_of_userinternal = $request->head_of_userinternal;
-        $userinternal->manager = $request->manager;
-        $userinternal->flag_designated = $request->flag_designated;
-        $userinternal->flag_external = $request->flag_external;
+        $userinternal->username = $request->username; 
+		$userinternal->id_department = $request->id_department; 
+		$userinternal->branch_work_desc = $request->branch_work_desc;
+        $userinternal->branch_work_base_on_spu = $request->branch_work_base_on_spu;
+        $userinternal->email = $request->email;
         $userinternal->is_active = $request->is_active;
         $userinternal->created_by = session()->get('session_name'); 
     	$userinternal->save();
@@ -97,8 +97,10 @@ class UserinternalController extends Controller
     function update (Request $request, $id)  
     {
         $validatedData = $request->validate([
-            'userinternal_name' => 'required',
-            'userinternal_desc' => 'required',
+            'username' => 'required',
+            'branch_work_desc' => 'required',
+            'branch_work_base_on_spu' => 'required',
+            'email' => 'required',
             'is_active' => 'required',
         ]);
         
@@ -111,13 +113,11 @@ class UserinternalController extends Controller
         }else{
             $userinternal->id_country = session()->get('session_country');
         }
-        $userinternal->userinternal_name = $request->userinternal_name; 
-        $userinternal->userinternal_desc = $request->userinternal_desc; 
+        $userinternal->username = $request->username; 
+        $userinternal->id_department = $request->id_department; 
+        $userinternal->branch_work_desc = $request->branch_work_desc;
+        $userinternal->branch_work_base_on_spu = $request->branch_work_base_on_spu;
         $userinternal->email = $request->email;
-        $userinternal->head_of_userinternal = $request->head_of_userinternal;
-        $userinternal->manager = $request->manager;
-        $userinternal->flag_designated = $request->flag_designated;
-        $userinternal->flag_external = $request->flag_external;
         $userinternal->is_active = $request->is_active;
         $userinternal->updated_by = session()->get('session_name') ;
     	$userinternal->save();

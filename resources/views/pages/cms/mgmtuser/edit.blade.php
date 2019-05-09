@@ -29,60 +29,44 @@
                         {{ csrf_field() }}
                             <table class="table">  
 
-                                @if(session()->get('session_superadmin') == 1)
                                 <tr>
-                                    <td>Country</td>
+                                    <td>User Internal</td>
                                     <td>
-                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_country" style="width: 100%">
-                                            <option value="">-- Choose Country --</option>
-                                            @foreach($country as $kontri)
-                                            <option value="{{$kontri->id}}" {{ ($data_mgmtuser->id_country == $kontri->id ? 'selected':'') }} >{{$kontri->country_name}}</option>
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_user_internal" style="width: 100%">
+                                            <option value="">-- Choose User Internal --</option>
+                                            @foreach($userinternal as $uint)
+                                            <option value="{{$uint->id}}" {{ ($data_mgmtuser->id_user_internal == $uint->id ? 'selected':'') }} >{{$uint->country_code}} - {{$uint->department_name}} ({{$uint->id}}) </option>
                                             @endforeach
                                         </select>
                                     </td>
-                                </tr> 
-                                @else
-                                @endif    
+                                </tr>    
                                 <tr>
-                                    <td>Mgmtuser Name <em style="color:red">*</em></td>
-                                    <td><input type="text"  class="form-control" name="mgmtuser_name" required="" placeholder="Mgmtuser Name" value="{{ $data_mgmtuser->mgmtuser_name }}" style="width: 100%"></td>
+                                    <td>Position</td>
+                                    <td>
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_position" style="width: 100%">
+                                            <option value="">-- Choose Position --</option>
+                                            @foreach($position as $pos)
+                                            <option value="{{$pos->id}}" {{ ($data_mgmtuser->id_position == $pos->id ? 'selected':'') }} >{{$pos->position}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
                                 </tr>   
                                 <tr>
-                                    <td>Mgmtuser Description <em style="color:red">*</em></td>
-                                    <td><textarea class="form-control" name="mgmtuser_desc" required="" placeholder="Description" style="width: 100%">{{ $data_mgmtuser->mgmtuser_desc }}</textarea></td>
+                                    <td>Password</td>
+                                    <td><input type="password" class="form-control" name="password" placeholder="Password" value="{{ old('password') }}" style="width: 100%"></td>
+                                </tr>  
+                                <tr>
+                                    <td>Confirmation Password</td>
+                                    <td> <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" value="{{ old('password_confirmation') }}" style="width: 100%"></td>
                                 </tr> 
                                 <tr>
                                     <td>Email</td>
-                                    <td><input type="email"  class="form-control" name="email" placeholder="Email" value="{{ $data_mgmtuser->email }}" style="width: 100%"></td>
+                                    <td><input type="email"  class="form-control" name="email" placeholder="Email" readonly value="{{$data_mgmtuser->email}}" style="width: 100%"></td>
                                 </tr>   
                                 <tr>
-                                    <td>Head Of Mgmtuser</td>
-                                    <td><input type="email" class="form-control" name="head_of_mgmtuser" placeholder="Email Head Of Mgmtuser" value="{{ $data_mgmtuser->head_of_mgmtuser }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Manager</td>
-                                    <td><input type="email" class="form-control" name="manager" placeholder="Email Manager" value="{{ $data_mgmtuser->manager }}" style="width: 100%"></td>
-                                </tr>  
-                                <tr>
-                                    <td>Flag Designated</td>
-                                    <td>
-                                        <select name="flag_designated"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_mgmtuser->flag_designated == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_mgmtuser->flag_designated == '0' ? 'selected':'') }}>No</option>
-                                        </select>
-                                    </td>
-                                </tr>   
-                                <tr>
-                                    <td>Flag Ecternal</td>
-                                    <td>
-                                        <select name="flag_external"  class="form-control" style="width: 100%">
-                                            <option value="">-- Choose Flag --</option>
-                                            <option value="1" {{ ($data_mgmtuser->flag_external == '1' ? 'selected':'') }}>Yes</option>
-                                            <option value="0" {{ ($data_mgmtuser->flag_external == '0' ? 'selected':'') }}>No</option>
-                                        </select>
-                                    </td>
-                                </tr>       
+                                    <td>Telephone</td>
+                                    <td><input type="text"  class="form-control" name="telephone" placeholder="Telephone" value="{{ $data_mgmtuser->telephone }}" style="width: 100%"></td>
+                                </tr>    
                                 <tr>
                                     <td>Is Active <em style="color:red">*</em></td>
                                     <td>

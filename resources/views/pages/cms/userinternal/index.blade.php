@@ -32,7 +32,7 @@
                                     <th>No</th>
                                     <th>Country</th>
                                     <th>Username</th>
-                                    <th>Department Name</th>
+                                    <th>Designated Department</th>
                                     <th>Status</th>
                                     <th>Created Date</th>
                                     <th>Modified Date</th>

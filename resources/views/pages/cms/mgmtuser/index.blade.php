@@ -31,8 +31,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Country</th>
-                                    <th>Mgmtuser Name</th>
-                                    <th>Mgmtuser Desc</th>
+                                    <th>User Internal ID</th>
+                                    <th>Designated Department</th>
+                                    <th>Position</th>
                                     <th>Status</th>
                                     <th>Created Date</th>
                                     <th>Modified Date</th>
@@ -45,8 +46,9 @@
                                 <tr>    
                                     <td>{{ $no++ }}</td>
                                     <td>{{$data->country_name}}</td>
-                                    <td>{{$data->mgmtuser_name}}</td>
-                                    <td>{{$data->mgmtuser_desc}}</td>
+                                    <td>{{$data->id_user_internal}}</td>
+                                    <td>{{$data->department_name}}</td>
+                                    <td>{{$data->position}}</td>
                                     <td>{{ $data->is_active=='1' ? 'Active':'Inactive' }}</td>
                                     <td>{{$data->created_at}}</td>
                                     <td>{{$data->updated_at}}</td>
@@ -56,7 +58,7 @@
                                         <form method="POST" action="{{url('/mgmtuser/'.$data->id.'/delete')}}">
                                             <!-- csrf perlu ditambahakan di setiap post -->
                                             {{ csrf_field() }}
-                                            <input class="btn btn-danger" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure want to delete caption {{$data->mgmtuser_name}}?');"> 
+                                            <input class="btn btn-danger" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure want to delete caption {{$data->department_name}}?');"> 
                                             <input type="hidden" name="_method" value="DELETE">
                                         </form>
                                     </td>

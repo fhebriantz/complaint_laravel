@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Routing\Middleware\LoginCheck;
 use vendor\autoload;
+use App\Http\Model\Mgmtuser;
+use App\Http\Model\Department;
 use App\Http\Model\Mgmtuserdept;
-use App\Http\Model\Country;
 
 class MgmtuserdeptController extends Controller
 {
@@ -27,23 +28,19 @@ class MgmtuserdeptController extends Controller
 
     function create()
     {
-        $country = Country::GetAllData();
-        return view('pages/cms/mgmtuserdept/create', compact('country'));
+        $mgmtuser = Mgmtuser::GetAllData();
+        $department = Department::GetAllData();
+        return view('pages/cms/mgmtuserdept/create', compact('mgmtuser','department'));
     }
 
     function edit($id)
     {
-        $country = Country::GetAllData();
-        $mgmtuserdept=Mgmtuserdept::where('id','=',$id)->first();
-        return view('pages/cms/mgmtuserdept/edit')
-        ->with('country',$country)
-        ->with('data_mgmtuserdept',$mgmtuserdept);
-    }
-
-    function view($id)
-    {
+        $mgmtuser = Mgmtuser::GetAllData();
+        $department = Department::GetAllData();
         $mgmtuserdept=Mgmtuserdept::GetAllData()->where('id','=',$id)->first();
-        return view('pages/cms/mgmtuserdept/view')
+        return view('pages/cms/mgmtuserdept/edit')
+        ->with('mgmtuser',$mgmtuser)
+        ->with('department',$department)
         ->with('data_mgmtuserdept',$mgmtuserdept);
     }
 
@@ -51,29 +48,13 @@ class MgmtuserdeptController extends Controller
     function insert(Request $request)  
     {
         $validatedData = $request->validate([
-            'mgmtuserdept_name' => 'required',
-            'mgmtuserdept_desc' => 'required',
-            'is_active' => 'required',
+            'id_mgmt_user' => 'required',
+            'id_designated_department' => 'required',
         ]);
 
     	$mgmtuserdept = new Mgmtuserdept;
-        if (session()->get('session_superadmin') == 1) {
-            $validatedData = $request->validate([
-                'id_country' => 'required',
-            ]);
-            $mgmtuserdept->id_country = $request->id_country;
-        }else{
-            $mgmtuserdept->id_country = session()->get('session_country');
-        }
-        $mgmtuserdept->mgmtuserdept_name = $request->mgmtuserdept_name; 
-		$mgmtuserdept->mgmtuserdept_desc = $request->mgmtuserdept_desc; 
-		$mgmtuserdept->email = $request->email;
-        $mgmtuserdept->head_of_mgmtuserdept = $request->head_of_mgmtuserdept;
-        $mgmtuserdept->manager = $request->manager;
-        $mgmtuserdept->flag_designated = $request->flag_designated;
-        $mgmtuserdept->flag_external = $request->flag_external;
-        $mgmtuserdept->is_active = $request->is_active;
-        $mgmtuserdept->created_by = session()->get('session_name'); 
+        $mgmtuserdept->id_mgmt_user = $request->id_mgmt_user; 
+		$mgmtuserdept->id_designated_department = $request->id_designated_department; 
     	$mgmtuserdept->save();
 
         $request->session()->flash('alert-success', 'New mgmtuserdept has been added successfully!');
@@ -85,29 +66,13 @@ class MgmtuserdeptController extends Controller
     function update (Request $request, $id)  
     {
         $validatedData = $request->validate([
-            'mgmtuserdept_name' => 'required',
-            'mgmtuserdept_desc' => 'required',
-            'is_active' => 'required',
+            'id_mgmt_user' => 'required',
+            'id_designated_department' => 'required',
         ]);
         
     	$mgmtuserdept = Mgmtuserdept::where('id','=',$id)->first();
-        if (session()->get('session_superadmin') == 1) {
-            $validatedData = $request->validate([
-                'id_country' => 'required',
-            ]);
-            $mgmtuserdept->id_country = $request->id_country;
-        }else{
-            $mgmtuserdept->id_country = session()->get('session_country');
-        }
-        $mgmtuserdept->mgmtuserdept_name = $request->mgmtuserdept_name; 
-        $mgmtuserdept->mgmtuserdept_desc = $request->mgmtuserdept_desc; 
-        $mgmtuserdept->email = $request->email;
-        $mgmtuserdept->head_of_mgmtuserdept = $request->head_of_mgmtuserdept;
-        $mgmtuserdept->manager = $request->manager;
-        $mgmtuserdept->flag_designated = $request->flag_designated;
-        $mgmtuserdept->flag_external = $request->flag_external;
-        $mgmtuserdept->is_active = $request->is_active;
-        $mgmtuserdept->updated_by = session()->get('session_name') ;
+        $mgmtuserdept->id_mgmt_user = $request->id_mgmt_user; 
+        $mgmtuserdept->id_designated_department = $request->id_designated_department; 
     	$mgmtuserdept->save();
 
         $request->session()->flash('alert-success', 'Mgmtuserdept has been updated successfully!');
@@ -115,25 +80,25 @@ class MgmtuserdeptController extends Controller
     	return  redirect('mgmtuserdept');
     }
 
-    // Function: Delete data -> update is_active = 2
-    public function delete(Request $request, $id){
+    // // Function: Delete data -> update is_active = 2
+    // public function delete(Request $request, $id){
         
-        $mgmtuserdept = Mgmtuserdept::find($id);
-        $mgmtuserdept->is_active = '2';
-        $mgmtuserdept->updated_by = session()->get('session_name') ;
-        $mgmtuserdept->save();
+    //     $mgmtuserdept = Mgmtuserdept::find($id);
+    //     $mgmtuserdept->is_active = '2';
+    //     $mgmtuserdept->updated_by = session()->get('session_name') ;
+    //     $mgmtuserdept->save();
 
-        $request->session()->flash('alert-success', 'Mgmtuserdept has been deleted successfully!');
+    //     $request->session()->flash('alert-success', 'Mgmtuserdept has been deleted successfully!');
 
-        return  redirect('mgmtuserdept');
-    } 
+    //     return  redirect('mgmtuserdept');
+    // } 
 
-    // Function: Delete data from table
-    public function delete_db($id){
-    	// find khusus untuk primary key di database
-    	$mgmtuserdept = Mgmtuserdept::find($id);
-    	$mgmtuserdept->delete();
+    // // Function: Delete data from table
+    // public function delete_db($id){
+    // 	// find khusus untuk primary key di database
+    // 	$mgmtuserdept = Mgmtuserdept::find($id);
+    // 	$mgmtuserdept->delete();
 
-    	return  redirect('mgmtuserdept');
-    } 
+    // 	return  redirect('mgmtuserdept');
+    // } 
 }

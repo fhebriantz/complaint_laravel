@@ -8,6 +8,9 @@ use Auth;
 use Illuminate\Routing\Middleware\LoginCheck;
 use vendor\autoload;
 use App\Http\Model\Mgmtuser;
+use App\Http\Model\Department;
+use App\Http\Model\Userinternal;
+use App\Http\Model\Position;
 use App\Http\Model\Country;
 
 class MgmtuserController extends Controller
@@ -27,16 +30,28 @@ class MgmtuserController extends Controller
 
     function create()
     {
-        $country = Country::GetAllData();
-        return view('pages/cms/mgmtuser/create', compact('country'));
+        $position = Position::all();
+        if (session()->get('session_superadmin') == 1) {
+            $userinternal = Userinternal::OrderbyCode();
+        }else{
+            $userinternal = Userinternal::OrderbyCode()
+            ->where('id_country','=',session()->get('session_country'));
+        }
+        return view('pages/cms/mgmtuser/create', compact('userinternal','position'));
     }
 
     function edit($id)
     {
-        $country = Country::GetAllData();
+        if (session()->get('session_superadmin') == 1) {
+            $userinternal = Userinternal::OrderbyCode();
+        }else{
+            $userinternal = Userinternal::OrderbyCode()->where('id_country','=',session()->get('session_country'));
+        }
+        $position = Position::all();
         $mgmtuser=Mgmtuser::where('id','=',$id)->first();
         return view('pages/cms/mgmtuser/edit')
-        ->with('country',$country)
+        ->with('userinternal',$userinternal)
+        ->with('position',$position)
         ->with('data_mgmtuser',$mgmtuser);
     }
 
@@ -51,27 +66,24 @@ class MgmtuserController extends Controller
     function insert(Request $request)  
     {
         $validatedData = $request->validate([
-            'mgmtuser_name' => 'required',
-            'mgmtuser_desc' => 'required',
+            'id_user_internal' => 'required',
+            'id_position' => 'required',
+            'password' => 'required|confirmed',
+            'telephone' => 'required',
             'is_active' => 'required',
         ]);
 
+        $userinternal = Userinternal::where('id','=',$request->id_user_internal)->first();
+
     	$mgmtuser = new Mgmtuser;
-        if (session()->get('session_superadmin') == 1) {
-            $validatedData = $request->validate([
-                'id_country' => 'required',
-            ]);
-            $mgmtuser->id_country = $request->id_country;
-        }else{
-            $mgmtuser->id_country = session()->get('session_country');
-        }
-        $mgmtuser->mgmtuser_name = $request->mgmtuser_name; 
-		$mgmtuser->mgmtuser_desc = $request->mgmtuser_desc; 
-		$mgmtuser->email = $request->email;
-        $mgmtuser->head_of_mgmtuser = $request->head_of_mgmtuser;
-        $mgmtuser->manager = $request->manager;
-        $mgmtuser->flag_designated = $request->flag_designated;
-        $mgmtuser->flag_external = $request->flag_external;
+        $mgmtuser->id_country = $userinternal->id_country; 
+		$mgmtuser->id_designated_department = $userinternal->id_department; 
+		$mgmtuser->id_user_internal = $request->id_user_internal;
+        $mgmtuser->id_position = $request->id_position;
+        $mgmtuser->password = md5($request->password);
+        $mgmtuser->password = md5($request->password_confirmation);
+        $mgmtuser->email = $userinternal->email;
+        $mgmtuser->telephone = $request->telephone;
         $mgmtuser->is_active = $request->is_active;
         $mgmtuser->created_by = session()->get('session_name'); 
     	$mgmtuser->save();
@@ -85,27 +97,24 @@ class MgmtuserController extends Controller
     function update (Request $request, $id)  
     {
         $validatedData = $request->validate([
-            'mgmtuser_name' => 'required',
-            'mgmtuser_desc' => 'required',
+            'id_user_internal' => 'required',
+            'id_position' => 'required',
+            'password' => 'required|confirmed',
+            'telephone' => 'required',
             'is_active' => 'required',
         ]);
+
+        $userinternal = Userinternal::where('id','=',$request->id_user_internal)->first();
         
     	$mgmtuser = Mgmtuser::where('id','=',$id)->first();
-        if (session()->get('session_superadmin') == 1) {
-            $validatedData = $request->validate([
-                'id_country' => 'required',
-            ]);
-            $mgmtuser->id_country = $request->id_country;
-        }else{
-            $mgmtuser->id_country = session()->get('session_country');
-        }
-        $mgmtuser->mgmtuser_name = $request->mgmtuser_name; 
-        $mgmtuser->mgmtuser_desc = $request->mgmtuser_desc; 
-        $mgmtuser->email = $request->email;
-        $mgmtuser->head_of_mgmtuser = $request->head_of_mgmtuser;
-        $mgmtuser->manager = $request->manager;
-        $mgmtuser->flag_designated = $request->flag_designated;
-        $mgmtuser->flag_external = $request->flag_external;
+        $mgmtuser->id_country = $userinternal->id_country; 
+        $mgmtuser->id_designated_department = $userinternal->id_department; 
+        $mgmtuser->id_user_internal = $request->id_user_internal;
+        $mgmtuser->id_position = $request->id_position;
+        $mgmtuser->password = md5($request->password);
+        $mgmtuser->password = md5($request->password_confirmation);
+        $mgmtuser->email = $userinternal->email;
+        $mgmtuser->telephone = $request->telephone;
         $mgmtuser->is_active = $request->is_active;
         $mgmtuser->updated_by = session()->get('session_name') ;
     	$mgmtuser->save();

@@ -50,7 +50,7 @@
                                 <tr>
                                     <td>Department</td>
                                     <td>
-                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_country" style="width: 100%">
+                                        <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="id_department" style="width: 100%">
                                             <option value="">-- Choose Department --</option>
                                             @foreach($department as $dept)
                                             <option value="{{$dept->id}}" {{ (old('id_department') == $dept->id ? 'selected':'') }} >{{$dept->country_code}} - {{$dept->department_name}}</option>
