@@ -13,7 +13,7 @@
 
 
 <!-- custom -->
-<script src="{{ asset('asset/js/main.js')}}"></script>
+<script src="{{ asset('asset/js/main.js?v=0.1')}}"></script>
 <script src="{{url('/js/ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -22,8 +22,7 @@
 </script>
 
 <script type="text/javascript">
-
-      function readURL(input) {
+    function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
